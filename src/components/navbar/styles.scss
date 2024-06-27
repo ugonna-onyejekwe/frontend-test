@@ -1,0 +1,134 @@
+@import "../../variables.scss";
+
+nav {
+  background: $bg_color;
+  z-index: 99;
+  position: sticky;
+  top: 0;
+  box-shadow: 0 0 5px grey;
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    padding: 20px 0;
+
+    .menu_btn {
+      display: none;
+      cursor: pointer;
+
+      @media (max-width: 1024px) {
+        display: block;
+      }
+    }
+
+    .logo {
+      width: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .navigators {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      width: calc(100% - 60px);
+
+      .links {
+        display: flex;
+        align-items: center;
+        gap: 30px;
+
+        a {
+          text-transform: capitalize;
+          font-size: 14px;
+          font-weight: 500;
+          text-decoration: none;
+          color: $text_color1;
+          cursor: pointer;
+        }
+      }
+
+      .btns_section {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+
+        button {
+          &:first-child {
+            background: rgba(32, 136, 143, 1);
+            color: white;
+          }
+
+          &:last-child {
+            background: rgba(33, 33, 33, 1);
+            color: white;
+          }
+        }
+      }
+    }
+
+    @media (max-width: 1024px) {
+      justify-content: space-between;
+
+      .navigators {
+        position: fixed;
+        z-index: 110 !important;
+        right: -110%;
+        top: 0;
+        flex-direction: column;
+        gap: 30px;
+        align-items: unset;
+        background: white;
+        height: 100vh;
+        width: 300px;
+        box-shadow: 0 0 5px grey;
+        padding: 30px;
+        transition: 0.4s ease;
+        justify-content: unset;
+
+        &.active {
+          right: 0;
+        }
+
+        .links {
+          flex-direction: column;
+          align-items: unset;
+          gap: 30px;
+        }
+
+        .btns_section {
+          flex-direction: column;
+          align-items: unset;
+          width: fit-content;
+          gap: 20px;
+        }
+      }
+    }
+  }
+}
+
+.backdrop {
+  display: none;
+  @media (max-width: 1024px) {
+    display: block;
+    z-index: 100;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: black;
+    pointer-events: none;
+    opacity: 0;
+    transition: 0.4s ease;
+
+    &.active {
+      opacity: 0.4;
+      pointer-events: all;
+    }
+  }
+}
